@@ -1,0 +1,539 @@
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: relative;
+  width: 100%;
+  height: 100px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 0 55px;
+
+  z-index: 100;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.navbar-logo {
+  justify-self: start;
+
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+
+  color: #ffffff;
+
+  transition:
+    color 0.6s ease,
+    text-shadow 0.6s ease;
+}
+
+.navbar-logo span {
+  color: var(--accent);
+}
+
+/* =========================================================
+   LIQUID GLASS NAVBAR
+========================================================= */
+
+.liquid-nav {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 5px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.075);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  backdrop-filter:
+    blur(24px)
+    saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(24px)
+    saturate(180%);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.32),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.14),
+    inset 1px 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 25px rgba(0, 0, 0, 0.16),
+    0 18px 45px rgba(0, 0, 0, 0.12);
+
+  overflow: hidden;
+  isolation: isolate;
+
+  transition:
+    background 0.7s ease,
+    border-color 0.7s ease,
+    box-shadow 0.7s ease;
+}
+
+/* =========================================================
+   LIQUID COLOR INSIDE NAVBAR
+========================================================= */
+
+.liquid-nav::before {
+  content: "";
+
+  position: absolute;
+
+  width: 190px;
+  height: 75px;
+
+  left: 4%;
+  top: -42px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--accent-secondary) 28%, transparent),
+      transparent 70%
+    );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+  z-index: -1;
+
+  animation: liquidMove 7s ease-in-out infinite alternate;
+}
+
+.liquid-nav::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 75px;
+
+  right: 3%;
+  bottom: -45px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--accent) 30%, transparent),
+      transparent 70%
+    );
+
+  filter: blur(27px);
+
+  pointer-events: none;
+  z-index: -1;
+
+  animation: liquidMoveReverse 8s ease-in-out infinite alternate;
+}
+
+/* =========================================================
+   GLASS REFLECTION
+========================================================= */
+
+.glass-shine {
+  position: absolute;
+
+  top: 1px;
+  left: 8%;
+
+  width: 84%;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.62),
+      transparent
+    );
+
+  filter: blur(1px);
+
+  opacity: 0.65;
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+/* =========================================================
+   NAV ITEMS
+========================================================= */
+
+.nav-item {
+  position: relative;
+
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 16px;
+
+  border-radius: 999px;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  z-index: 2;
+
+  transition:
+    color 0.25s ease;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+/* =========================================================
+   NAV TEXT
+========================================================= */
+
+.nav-text {
+  position: relative;
+
+  z-index: 3;
+
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+/* =========================================================
+   ACTIVE TEXT
+========================================================= */
+
+.active-text {
+  color: #25212c;
+
+  font-weight: 600;
+
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+/* =========================================================
+   ACTIVE LIQUID GLASS PILL
+========================================================= */
+
+.active-pill {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.58),
+      rgba(255, 255, 255, 0.22)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.52);
+
+  backdrop-filter:
+    blur(14px)
+    saturate(170%);
+
+  -webkit-backdrop-filter:
+    blur(14px)
+    saturate(170%);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.70),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.08),
+    0 3px 14px rgba(255, 255, 255, 0.10);
+
+  z-index: 1;
+
+  will-change: transform;
+}
+
+/* =========================================================
+   ACTIVE GLASS HIGHLIGHT
+========================================================= */
+
+.active-pill::before {
+  content: "";
+
+  position: absolute;
+
+  top: 2px;
+  left: 12%;
+
+  width: 76%;
+  height: 36%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.48),
+      transparent
+    );
+
+  filter: blur(6px);
+
+  opacity: 0.55;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
+.theme-toggle {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  margin-left: 2px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+
+  background:
+    rgba(255, 255, 255, 0.075);
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  z-index: 4;
+
+  backdrop-filter:
+    blur(16px)
+    saturate(170%);
+
+  -webkit-backdrop-filter:
+    blur(16px)
+    saturate(170%);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.28),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.10),
+    0 3px 12px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.45s ease,
+    border-color 0.45s ease,
+    color 0.45s ease,
+    transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.14);
+
+  transform: scale(1.04);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+/* =========================================================
+   LIQUID MOTION
+========================================================= */
+
+@keyframes liquidMove {
+  0% {
+    transform:
+      translate3d(-35px, 4px, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(20px, -4px, 0)
+      scale(1.12);
+  }
+
+  100% {
+    transform:
+      translate3d(75px, 3px, 0)
+      scale(1.25);
+  }
+}
+
+@keyframes liquidMoveReverse {
+  0% {
+    transform:
+      translate3d(35px, 2px, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(-20px, -4px, 0)
+      scale(1.12);
+  }
+
+  100% {
+    transform:
+      translate3d(-75px, 3px, 0)
+      scale(1.28);
+  }
+}
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+body.light-theme .navbar-logo {
+  color: #171522;
+
+  text-shadow:
+    0 1px 8px rgba(255, 255, 255, 0.30);
+}
+
+/* =========================================================
+   LIGHT LIQUID GLASS
+========================================================= */
+
+body.light-theme .liquid-nav {
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  border-color:
+    rgba(255, 255, 255, 0.58);
+
+  backdrop-filter:
+    blur(25px)
+    saturate(175%);
+
+  -webkit-backdrop-filter:
+    blur(25px)
+    saturate(175%);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.72),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.15),
+    0 10px 30px rgba(90, 70, 120, 0.10),
+    0 20px 45px rgba(90, 70, 120, 0.08);
+}
+
+body.light-theme .nav-item {
+  color:
+    rgba(40, 35, 55, 0.68);
+}
+
+body.light-theme .nav-item:hover {
+  color: #201b2c;
+}
+
+/* =========================================================
+   LIGHT ACTIVE PILL
+========================================================= */
+
+body.light-theme .active-pill {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.48),
+      rgba(255, 255, 255, 0.16)
+    );
+
+  border-color:
+    rgba(255, 255, 255, 0.60);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.82),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+    0 3px 15px rgba(255, 255, 255, 0.18);
+}
+
+body.light-theme .active-text {
+  color: #2a2538;
+
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.65);
+}
+
+/* =========================================================
+   LIGHT THEME BUTTON
+========================================================= */
+
+body.light-theme .theme-toggle {
+  color: #2a2538;
+
+  background:
+    rgba(255, 255, 255, 0.18);
+
+  border-color:
+    rgba(255, 255, 255, 0.58);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+    0 3px 12px rgba(70, 60, 100, 0.08);
+}
+
+body.light-theme .theme-toggle:hover {
+  background:
+    rgba(255, 255, 255, 0.28);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+  .navbar {
+    padding: 0 25px;
+  }
+
+  .nav-item {
+    padding: 0 11px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .navbar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .liquid-nav {
+    justify-self: end;
+  }
+
+  .nav-item {
+    display: none;
+  }
+}

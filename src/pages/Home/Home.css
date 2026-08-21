@@ -1,0 +1,1040 @@
+/* =========================================
+   HOME PAGE
+========================================= */
+
+.home-page {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================================
+   BOTTOM LIQUID GLASS DOCK
+========================================= */
+
+.home-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 38px;
+
+  width: max-content;
+  max-width: calc(100vw - 32px);
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.055)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  backdrop-filter:
+    blur(26px)
+    saturate(190%);
+
+  -webkit-backdrop-filter:
+    blur(26px)
+    saturate(190%);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.38),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.16),
+    0 10px 30px rgba(0, 0, 0, 0.22),
+    0 0 35px var(--accent-glow);
+
+  overflow: hidden;
+  isolation: isolate;
+
+  z-index: 200;
+
+  transform: translateX(-50%);
+
+  animation: dockFloat 5s ease-in-out infinite;
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+/* =========================================
+   LIQUID LIGHT
+========================================= */
+
+.home-dock::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 80px;
+
+  left: 4%;
+  top: -55px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      color-mix(
+        in srgb,
+        var(--accent-secondary) 28%,
+        transparent
+      ),
+      transparent 70%
+    );
+
+  filter: blur(28px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  animation: dockLiquidOne 7s ease-in-out infinite alternate;
+}
+
+
+.home-dock::after {
+  content: "";
+
+  position: absolute;
+
+  width: 200px;
+  height: 80px;
+
+  right: 3%;
+  bottom: -55px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      color-mix(
+        in srgb,
+        var(--accent) 30%,
+        transparent
+      ),
+      transparent 70%
+    );
+
+  filter: blur(28px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  animation: dockLiquidTwo 8s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   NORMAL DOCK BUTTONS
+========================================= */
+
+.dock-item {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.24);
+
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.30),
+      rgba(255, 255, 255, 0.08)
+    );
+
+  backdrop-filter:
+    blur(15px)
+    saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(15px)
+    saturate(180%);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.42),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.10),
+    0 3px 10px rgba(0, 0, 0, 0.14);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  z-index: 2;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* =========================================
+   HIDE LABELS
+========================================= */
+
+.dock-item > span:last-child {
+  display: none;
+}
+
+
+/* =========================================
+   BUTTON HOVER
+========================================= */
+
+.dock-item:hover {
+  transform: translateY(-3px) scale(1.02);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.46),
+      rgba(255, 255, 255, 0.14)
+    );
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--accent) 42%,
+      rgba(255, 255, 255, 0.42)
+    );
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.65),
+    0 7px 18px rgba(0, 0, 0, 0.22),
+    0 0 16px var(--accent-glow);
+}
+
+
+.dock-item:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+
+/* =========================================
+   MACOS APP ICON BASE
+========================================= */
+
+.app-icon {
+  position: relative;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.16),
+    0 2px 5px rgba(0, 0, 0, 0.22);
+
+  transform: translateZ(0);
+}
+
+
+/* glossy top reflection */
+
+.app-icon::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 8%;
+
+  width: 84%;
+  height: 42%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.42),
+      rgba(255, 255, 255, 0)
+    );
+
+  filter: blur(2px);
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+
+/* =========================================
+   ABOUT ME — CONTACTS STYLE
+========================================= */
+
+.contacts-icon {
+  background:
+    linear-gradient(
+      145deg,
+      #ffd75f 0%,
+      #ff9f43 48%,
+      #ff5f7e 100%
+    );
+}
+
+.contacts-head {
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+
+  top: 6px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.18);
+
+  z-index: 3;
+}
+
+.contacts-body {
+  position: absolute;
+
+  width: 20px;
+  height: 11px;
+
+  bottom: 5px;
+
+  border-radius: 12px 12px 8px 8px;
+
+  background: white;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.15);
+
+  z-index: 3;
+}
+
+
+/* =========================================
+   BROWSER — SAFARI STYLE
+========================================= */
+
+.safari-icon {
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #58d7ff,
+      #1478ff 52%,
+      #0750c8
+    );
+
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.72),
+    inset 0 0 0 4px rgba(255, 255, 255, 0.14),
+    0 2px 6px rgba(0, 60, 180, 0.35);
+}
+
+.safari-ring {
+  position: absolute;
+
+  width: 23px;
+  height: 23px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+
+  z-index: 2;
+}
+
+.safari-needle {
+  position: absolute;
+
+  width: 3px;
+  height: 17px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ff4f65 0 48%,
+      white 48% 100%
+    );
+
+  transform: rotate(42deg);
+
+  box-shadow:
+    0 0 2px rgba(0, 0, 0, 0.2);
+
+  z-index: 4;
+}
+
+
+/* =========================================
+   RESUME — DOCUMENT STYLE
+========================================= */
+
+.resume-icon {
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #e5e9f2
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.resume-fold {
+  position: absolute;
+
+  top: 4px;
+  right: 4px;
+
+  width: 10px;
+  height: 10px;
+
+  background: #cbd3e0;
+
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+
+  z-index: 3;
+}
+
+.resume-line {
+  position: absolute;
+
+  left: 7px;
+
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: #718096;
+
+  z-index: 4;
+}
+
+.line-one {
+  top: 12px;
+  width: 16px;
+}
+
+.line-two {
+  top: 17px;
+  width: 13px;
+}
+
+.line-three {
+  top: 22px;
+  width: 10px;
+}
+
+
+/* =========================================
+   SETTINGS — MACOS STYLE
+========================================= */
+
+.settings-icon {
+  background:
+    linear-gradient(
+      145deg,
+      #9aa3b2,
+      #596273
+    );
+}
+
+.gear {
+  position: relative;
+
+  color: white;
+
+  font-size: 24px;
+
+  line-height: 1;
+
+  font-family: Arial, sans-serif;
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3);
+
+  z-index: 4;
+}
+
+
+/* =========================================
+   DIRECT CHAT — MESSAGES STYLE
+========================================= */
+
+.messages-icon {
+  background:
+    linear-gradient(
+      145deg,
+      #67e66f,
+      #20b83d
+    );
+
+  border-radius: 50%;
+}
+
+.message-bubble {
+  position: relative;
+
+  width: 22px;
+  height: 17px;
+
+  border-radius: 10px;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2px;
+
+  z-index: 4;
+}
+
+.message-bubble::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -3px;
+  left: 4px;
+
+  width: 7px;
+  height: 7px;
+
+  background: white;
+
+  transform: rotate(35deg);
+
+  z-index: -1;
+}
+
+.message-dot {
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: #35bd4b;
+}
+
+
+/* =========================================
+   ASK ME — GEMINI STYLE
+========================================= */
+
+.dock-ask {
+  position: relative;
+
+  width: 132px;
+  height: 48px;
+
+  flex: 0 0 132px;
+
+  padding: 0 18px;
+
+  border-radius: 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.58);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.48)
+    );
+
+  color: #30313a;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  backdrop-filter:
+    blur(18px)
+    saturate(190%);
+
+  -webkit-backdrop-filter:
+    blur(18px)
+    saturate(190%);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.18),
+    0 4px 14px rgba(255, 255, 255, 0.18);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  z-index: 3;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* =========================================
+   GEMINI ICON
+========================================= */
+
+.gemini-icon {
+  position: relative;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  font-size: 27px;
+  line-height: 1;
+
+  font-family: Arial, sans-serif;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4285f4 0%,
+      #8b5cf6 35%,
+      #d946ef 58%,
+      #f59e0b 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  filter:
+    drop-shadow(
+      0 0 6px rgba(112, 105, 255, 0.32)
+    );
+}
+
+.gemini-small {
+  position: relative;
+
+  z-index: 4;
+
+  font-size: 13px;
+  line-height: 1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4285f4,
+      #8b5cf6,
+      #d946ef,
+      #f59e0b
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================
+   ASK ME REFLECTION
+========================================= */
+
+.dock-ask::before {
+  content: "";
+
+  position: absolute;
+
+  top: 2px;
+  left: 12%;
+
+  width: 76%;
+  height: 35%;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.65),
+      transparent
+    );
+
+  filter: blur(6px);
+
+  opacity: 0.6;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ASK ME HOVER
+========================================= */
+
+.dock-ask:hover {
+  transform: translateY(-3px) scale(1.01);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--accent) 40%,
+      rgba(255, 255, 255, 0.58)
+    );
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    0 8px 22px rgba(255, 255, 255, 0.26),
+    0 0 20px var(--accent-glow);
+}
+
+.dock-ask:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+
+/* =========================================
+   FLOATING DOCK
+========================================= */
+
+@keyframes dockFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
+
+/* =========================================
+   LIQUID MOTION
+========================================= */
+
+@keyframes dockLiquidOne {
+  0% {
+    transform:
+      translateX(-25px)
+      translateY(0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translateX(25px)
+      translateY(4px)
+      scale(1.1);
+  }
+
+  100% {
+    transform:
+      translateX(70px)
+      translateY(-2px)
+      scale(1.2);
+  }
+}
+
+@keyframes dockLiquidTwo {
+  0% {
+    transform:
+      translateX(25px)
+      translateY(0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translateX(-20px)
+      translateY(-4px)
+      scale(1.12);
+  }
+
+  100% {
+    transform:
+      translateX(-65px)
+      translateY(2px)
+      scale(1.25);
+  }
+}
+
+
+/* =========================================
+   LIGHT THEME
+========================================= */
+
+body.light-theme .home-dock {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.38),
+      rgba(255, 255, 255, 0.14)
+    );
+
+  border-color: rgba(255, 255, 255, 0.65);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+    0 10px 30px rgba(80, 70, 120, 0.14),
+    0 0 35px var(--accent-glow);
+}
+
+
+/* =========================================
+   LIGHT NORMAL BUTTONS
+========================================= */
+
+body.light-theme .dock-item {
+  color: #303447;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.70),
+      rgba(255, 255, 255, 0.28)
+    );
+
+  border-color: rgba(255, 255, 255, 0.76);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.15),
+    0 3px 10px rgba(80, 70, 120, 0.09);
+}
+
+body.light-theme .dock-item:hover {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0.40)
+    );
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--accent) 38%,
+      rgba(255, 255, 255, 0.76)
+    );
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    0 7px 18px rgba(80, 70, 120, 0.12),
+    0 0 16px var(--accent-glow);
+}
+
+
+/* =========================================
+   LIGHT ASK ME
+========================================= */
+
+body.light-theme .dock-ask {
+  color: #303044;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.58)
+    );
+
+  border-color: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 1),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.22),
+    0 4px 15px rgba(90, 80, 130, 0.10),
+    0 0 18px var(--accent-glow);
+}
+
+
+/* =========================================
+   DARK THEME
+========================================= */
+
+body:not(.light-theme) .dock-item {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body:not(.light-theme) .dock-ask {
+  color: #30313a;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+  .home-dock {
+    bottom: 22px;
+
+    gap: 5px;
+    padding: 6px;
+
+    border-radius: 19px;
+  }
+
+  .dock-item {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+
+    border-radius: 13px;
+  }
+
+  .app-icon {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 8px;
+  }
+
+  .dock-ask {
+    width: 108px;
+    height: 42px;
+    flex-basis: 108px;
+
+    border-radius: 13px;
+
+    font-size: 13px;
+  }
+
+  .gemini-icon {
+    width: 21px;
+    height: 21px;
+
+    font-size: 24px;
+  }
+
+  .gemini-small {
+    font-size: 11px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .home-dock {
+    bottom: 18px;
+
+    gap: 4px;
+    padding: 6px;
+
+    max-width: calc(100vw - 20px);
+  }
+
+  .dock-item {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+
+    border-radius: 12px;
+  }
+
+  .app-icon {
+    width: 26px;
+    height: 26px;
+
+    border-radius: 7px;
+  }
+
+  .dock-ask {
+    width: 94px;
+    height: 38px;
+    flex-basis: 94px;
+
+    padding: 0 10px;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+  }
+
+  .gemini-icon {
+    width: 18px;
+    height: 18px;
+
+    font-size: 21px;
+  }
+
+  .gemini-small {
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .home-dock,
+  .home-dock::before,
+  .home-dock::after {
+    animation: none;
+  }
+
+  .dock-item,
+  .dock-ask {
+    transition: none;
+  }
+}

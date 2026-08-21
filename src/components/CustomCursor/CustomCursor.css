@@ -1,0 +1,481 @@
+/* =========================================================
+   CUSTOM CURSOR
+   IMAGE CURSORS
+========================================================= */
+
+.custom-cursor {
+  --cursor-size-scale: 0.12;
+  --cursor-glow: 0.65;
+
+  position: fixed !important;
+  left: 0;
+  top: 0;
+
+  width: 100px;
+  height: 100px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 2147483647 !important;
+
+  pointer-events: none !important;
+  user-select: none !important;
+
+  transform:
+    translate(-50%, -50%)
+    scale(var(--cursor-size-scale, 0.12));
+
+  transform-origin: center center;
+
+  opacity: 0;
+
+  overflow: visible !important;
+
+  will-change:
+    left,
+    top,
+    transform,
+    opacity;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   HIDE REAL CURSOR
+========================================================= */
+
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+
+/* =========================================================
+   COMMON IMAGE
+========================================================= */
+
+.cursor-image {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  object-fit: contain;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  pointer-events: none !important;
+  user-select: none !important;
+
+  -webkit-user-drag: none;
+
+  transform:
+    translate(-50%, -50%);
+
+  transform-origin: center center;
+
+  overflow: visible;
+
+  will-change:
+    transform,
+    filter;
+}
+
+
+/* =========================================================
+   PIKACHU
+========================================================= */
+
+.cursor-pikachu-image {
+  width: 78px;
+  height: 78px;
+
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(
+        255,
+        193,
+        7,
+        calc(0.9 * var(--cursor-glow, 0.65))
+      )
+    )
+    drop-shadow(
+      0 0 10px
+      rgba(
+        255,
+        193,
+        7,
+        calc(0.55 * var(--cursor-glow, 0.65))
+      )
+    );
+
+  animation:
+    pikachuFloat 1.8s ease-in-out infinite;
+}
+
+@keyframes pikachuFloat {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      rotate(2deg);
+  }
+}
+
+
+/* =========================================================
+   RYUK
+========================================================= */
+
+.cursor-ryuk-image {
+  width: 92px;
+  height: 92px;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(
+        255,
+        70,
+        70,
+        calc(0.9 * var(--cursor-glow, 0.65))
+      )
+    )
+    drop-shadow(
+      0 0 12px
+      rgba(
+        255,
+        70,
+        70,
+        calc(0.55 * var(--cursor-glow, 0.65))
+      )
+    );
+
+  animation:
+    ryukFloat 2s ease-in-out infinite;
+}
+
+@keyframes ryukFloat {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      rotate(2deg);
+  }
+}
+
+
+/* =========================================================
+   DEATH NOTE APPLE
+========================================================= */
+
+.cursor-apple-image {
+  width: 78px;
+  height: 78px;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(
+        220,
+        40,
+        40,
+        calc(0.9 * var(--cursor-glow, 0.65))
+      )
+    )
+    drop-shadow(
+      0 0 12px
+      rgba(
+        220,
+        40,
+        40,
+        calc(0.55 * var(--cursor-glow, 0.65))
+      )
+    );
+
+  animation:
+    appleFloat 2.2s ease-in-out infinite;
+}
+
+@keyframes appleFloat {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotate(-4deg);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      rotate(4deg);
+  }
+}
+
+
+/* =========================================================
+   PIKACHU ARROW
+========================================================= */
+
+.cursor-pikachu-arrow-image {
+  width: 82px;
+  height: 82px;
+
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(
+        255,
+        193,
+        7,
+        calc(0.9 * var(--cursor-glow, 0.65))
+      )
+    )
+    drop-shadow(
+      0 0 12px
+      rgba(
+        255,
+        193,
+        7,
+        calc(0.55 * var(--cursor-glow, 0.65))
+      )
+    );
+
+  animation:
+    pikachuArrowFloat 1.6s ease-in-out infinite;
+}
+
+@keyframes pikachuArrowFloat {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      rotate(2deg);
+  }
+}
+
+
+/* =========================================================
+   CURSOR TRAIL
+========================================================= */
+
+.custom-cursor-trail {
+  position: fixed !important;
+
+  left: 0;
+  top: 0;
+
+  width: 100px;
+  height: 100px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 2147483646 !important;
+
+  pointer-events: none !important;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%);
+
+  transform-origin: center center;
+
+  overflow: visible !important;
+
+  will-change:
+    left,
+    top,
+    opacity;
+}
+
+
+/* =========================================================
+   TRAIL IMAGE
+========================================================= */
+
+.custom-cursor-trail img {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 72px;
+  height: 72px;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  object-fit: contain;
+
+  transform:
+    translate(-50%, -50%);
+
+  opacity: 0.35;
+
+  filter:
+    blur(1.2px)
+    drop-shadow(
+      0 0 5px
+      rgba(
+        139,
+        92,
+        246,
+        calc(0.45 * var(--cursor-glow, 0.65))
+      )
+    );
+
+  pointer-events: none !important;
+
+  user-select: none !important;
+
+  -webkit-user-drag: none;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+
+/* =========================================================
+   TRAIL GLOW - AUTOMATIC COLOR BY CURSOR
+========================================================= */
+
+.custom-cursor-trail img[src*="pikachu"] {
+  filter:
+    blur(1.2px)
+    drop-shadow(
+      0 0 5px
+      rgba(
+        255,
+        193,
+        7,
+        calc(0.5 * var(--cursor-glow, 0.65))
+      )
+    );
+}
+
+
+.custom-cursor-trail img[src*="ryuk"] {
+  filter:
+    blur(1.2px)
+    drop-shadow(
+      0 0 6px
+      rgba(
+        255,
+        70,
+        70,
+        calc(0.5 * var(--cursor-glow, 0.65))
+      )
+    );
+}
+
+
+.custom-cursor-trail img[src*="death-note-apple"] {
+  filter:
+    blur(1.2px)
+    drop-shadow(
+      0 0 6px
+      rgba(
+        220,
+        40,
+        40,
+        calc(0.5 * var(--cursor-glow, 0.65))
+      )
+    );
+}
+
+
+.custom-cursor-trail img[src*="pikachu-arrow"] {
+  filter:
+    blur(1.2px)
+    drop-shadow(
+      0 0 6px
+      rgba(
+        255,
+        193,
+        7,
+        calc(0.5 * var(--cursor-glow, 0.65))
+      )
+    );
+}
+
+
+/* =========================================================
+   PREVENT IMAGE SELECTION / DRAGGING
+========================================================= */
+
+.custom-cursor img,
+.custom-cursor-trail img {
+  -webkit-user-drag: none;
+  user-drag: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  pointer-events: none !important;
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor,
+  .custom-cursor-trail {
+    display: none !important;
+  }
+
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: auto !important;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .custom-cursor *,
+  .custom-cursor-trail,
+  .custom-cursor-trail * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

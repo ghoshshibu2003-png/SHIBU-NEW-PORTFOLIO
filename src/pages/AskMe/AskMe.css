@@ -1,0 +1,17 @@
+.ask-me-page {
+  min-height: calc(100vh - 100px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ask-me-page h1 {
+  margin: 0 0 10px;
+}
+
+.ask-me-page p {
+  margin: 0;
+}

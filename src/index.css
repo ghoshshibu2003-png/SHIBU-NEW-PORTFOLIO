@@ -1,0 +1,507 @@
+:root {
+  --text: #d6d9e2;
+  --text-h: #ffffff;
+  --bg: #090a12;
+
+  --accent: #8b5cf6;
+  --accent-secondary: #ec4899;
+  --accent-glow: rgba(139, 92, 246, 0.35);
+
+  --sans: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 16px/145% var(--sans);
+  letter-spacing: 0.1px;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #090a12;
+}
+
+body {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background: #090a12;
+  color: var(--text);
+
+  transition:
+    background-color 0.9s ease,
+    color 0.9s ease;
+}
+
+
+/* =========================================================
+   DARK LIQUID BACKGROUND
+   PURPLE + CRIMSON + BLUE
+========================================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: -18%;
+
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+
+    /* PURPLE LEFT */
+    radial-gradient(
+      ellipse 58% 75% at 0% 48%,
+      rgba(112, 42, 145, 0.92) 0%,
+      rgba(91, 38, 128, 0.70) 28%,
+      rgba(65, 35, 95, 0.34) 52%,
+      transparent 75%
+    ),
+
+    /* CRIMSON CENTER */
+    radial-gradient(
+      ellipse 58% 70% at 52% 48%,
+      rgba(137, 20, 52, 0.86) 0%,
+      rgba(120, 18, 48, 0.68) 30%,
+      rgba(85, 20, 48, 0.35) 58%,
+      transparent 78%
+    ),
+
+    /* BLUE RIGHT */
+    radial-gradient(
+      ellipse 58% 72% at 105% 50%,
+      rgba(48, 63, 165, 0.82) 0%,
+      rgba(47, 53, 140, 0.62) 30%,
+      rgba(35, 40, 105, 0.30) 55%,
+      transparent 76%
+    ),
+
+    /* BLUE BOTTOM */
+    radial-gradient(
+      ellipse 58% 48% at 20% 105%,
+      rgba(31, 63, 145, 0.58),
+      transparent 75%
+    ),
+
+    /* RED BOTTOM */
+    radial-gradient(
+      ellipse 55% 45% at 58% 105%,
+      rgba(100, 24, 48, 0.52),
+      transparent 75%
+    );
+
+  filter: blur(58px);
+
+  transform: translate3d(0, 0, 0);
+
+  animation: darkLiquid 18s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   DARK DEPTH
+========================================================= */
+
+body::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 20%,
+      rgba(0, 0, 0, 0.05) 55%,
+      rgba(0, 0, 0, 0.20) 100%
+    );
+}
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+#root {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: none;
+
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: center;
+
+  background: transparent;
+
+  border: none;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =========================================================
+   CODE
+========================================================= */
+
+code {
+  font-family: var(--mono);
+
+  display: inline-flex;
+
+  border-radius: 4px;
+
+  color: var(--text-h);
+
+  font-size: 15px;
+  line-height: 135%;
+
+  padding: 4px 8px;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================================
+   DARK THEME VARIABLES
+========================================================= */
+
+body:not(.light-theme) {
+  --text: #d6d9e2;
+  --text-h: #ffffff;
+  --bg: #090a12;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   STRONG PINK + ORANGE + BLUE
+========================================================= */
+
+body.light-theme {
+  --text: #393543;
+  --text-h: #15121d;
+  --bg: #eee9ed;
+
+  background: #eee9ed;
+  color: var(--text);
+}
+
+
+/* =========================================================
+   LIGHT LIQUID BACKGROUND
+========================================================= */
+
+body.light-theme::before {
+  content: "";
+
+  position: fixed;
+  inset: -12%;
+
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+
+    /* STRONG PINK LEFT */
+    radial-gradient(
+      ellipse 62% 82% at -3% 48%,
+      rgba(248, 70, 125, 0.98) 0%,
+      rgba(249, 83, 135, 0.88) 25%,
+      rgba(249, 125, 160, 0.62) 45%,
+      transparent 73%
+    ),
+
+    /* ORANGE / GOLD CENTER */
+    radial-gradient(
+      ellipse 62% 76% at 52% 58%,
+      rgba(255, 172, 76, 0.94) 0%,
+      rgba(255, 181, 88, 0.80) 27%,
+      rgba(251, 194, 122, 0.52) 48%,
+      transparent 75%
+    ),
+
+    /* BLUE RIGHT */
+    radial-gradient(
+      ellipse 58% 75% at 105% 53%,
+      rgba(132, 169, 231, 0.82) 0%,
+      rgba(151, 181, 225, 0.64) 28%,
+      rgba(185, 200, 224, 0.38) 50%,
+      transparent 75%
+    ),
+
+    /* SOFT TOP LIGHT */
+    radial-gradient(
+      ellipse 65% 42% at 55% -5%,
+      rgba(244, 239, 244, 0.48),
+      transparent 70%
+    ),
+
+    /* BLUE BOTTOM */
+    radial-gradient(
+      ellipse 58% 48% at 54% 108%,
+      rgba(125, 151, 235, 0.62),
+      transparent 73%
+    ),
+
+    /* SOFT PURPLE */
+    radial-gradient(
+      ellipse 45% 45% at 24% 88%,
+      rgba(202, 135, 229, 0.42),
+      transparent 72%
+    );
+
+  filter: blur(48px);
+
+  transform: translate3d(0, 0, 0);
+
+  animation: lightLiquid 18s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   LIGHT DEPTH
+========================================================= */
+
+body.light-theme::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.015) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+}
+
+
+/* =========================================================
+   THEME TRANSITION
+========================================================= */
+
+body,
+body::before,
+body::after,
+#root {
+  transition:
+    background-color 0.9s ease,
+    color 0.9s ease;
+}
+
+
+/* =========================================================
+   DARK LIQUID ANIMATION
+========================================================= */
+
+@keyframes darkLiquid {
+
+  0% {
+    transform:
+      translate3d(-2%, -1%, 0)
+      scale(1);
+  }
+
+  25% {
+    transform:
+      translate3d(1%, 1%, 0)
+      scale(1.025);
+  }
+
+  50% {
+    transform:
+      translate3d(3%, -1%, 0)
+      scale(1.05);
+  }
+
+  75% {
+    transform:
+      translate3d(-1%, 3%, 0)
+      scale(1.035);
+  }
+
+  100% {
+    transform:
+      translate3d(2%, -2%, 0)
+      scale(1.07);
+  }
+}
+
+
+/* =========================================================
+   LIGHT LIQUID ANIMATION
+========================================================= */
+
+@keyframes lightLiquid {
+
+  0% {
+    transform:
+      translate3d(-1%, -1%, 0)
+      scale(1);
+  }
+
+  25% {
+    transform:
+      translate3d(1%, 1%, 0)
+      scale(1.025);
+  }
+
+  50% {
+    transform:
+      translate3d(2%, -1%, 0)
+      scale(1.05);
+  }
+
+  75% {
+    transform:
+      translate3d(-1%, 2%, 0)
+      scale(1.035);
+  }
+
+  100% {
+    transform:
+      translate3d(2%, -1%, 0)
+      scale(1.07);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  :root {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  html,
+  body,
+  #root {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  body::before {
+    animation: none;
+  }
+
+  body,
+  body::before,
+  body::after,
+  #root {
+    transition: none;
+  }
+}
